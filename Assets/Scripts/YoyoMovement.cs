@@ -7,14 +7,12 @@ public class YoyoMovement : MonoBehaviour
 {
     public float speed;  // rounds per second
     public float distance; // relative to center
-
     private Transform m_Transfom;
     private bool isTweening;
-
+   
     private void Awake()
     {
         speed = 2f;
-        distance = -443f;
         m_Transfom = GetComponent<Transform>();
         isTweening = false;
     }
@@ -25,7 +23,7 @@ public class YoyoMovement : MonoBehaviour
         {
             float tweenTime = speed == 0 ? 0 : (1 / speed);
             isTweening = true;
-            m_Transfom.DOLocalMoveY(distance, tweenTime).SetLoops(2, LoopType.Yoyo).OnComplete(() => { isTweening = false; });
+            m_Transfom.DOLocalMoveY(distance, 0.5f).SetLoops(2, LoopType.Yoyo).OnComplete(()=> { isTweening = false;});
         }
     }
 
